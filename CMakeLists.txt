@@ -4,6 +4,8 @@ PROJECT (tinygltf)
 
 SET(CMAKE_CXX_STANDARD 11)
 
+option(TINYGLTF_BUILD_EXAMPLES "Compile examples" true)
+
 if (TINYGLTF_BUILD_EXAMPLES)
   ADD_EXECUTABLE ( loader_example
     loader_example.cc
