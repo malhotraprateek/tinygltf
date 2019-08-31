@@ -4,13 +4,15 @@ PROJECT (tinygltf)
 
 SET(CMAKE_CXX_STANDARD 11)
 
-ADD_EXECUTABLE ( loader_example
-  loader_example.cc
-  )
+if (TINYGLTF_BUILD_EXAMPLES)
+  ADD_EXECUTABLE ( loader_example
+    loader_example.cc
+    )
 
-ADD_SUBDIRECTORY ( examples/gltfutil )
-ADD_SUBDIRECTORY ( examples/glview )
-ADD_SUBDIRECTORY ( examples/validator )
+  ADD_SUBDIRECTORY ( examples/gltfutil )
+  ADD_SUBDIRECTORY ( examples/glview )
+  ADD_SUBDIRECTORY ( examples/validator )
+endif ()
 
 INSTALL ( FILES
   json.hpp
