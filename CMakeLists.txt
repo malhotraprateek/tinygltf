@@ -32,8 +32,15 @@ if (TINYGLTF_BUILD_EXAMPLES)
 
 else ()
 
+  # A simple project to show tinygltf headers in the IDE
+  file(GLOB tinygltf_INCLUDE_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/*.h" "${CMAKE_CURRENT_SOURCE_DIR}/*.hpp")
+  # add_custom_target(tinygltf_headers_for_ide SOURCES ${tinygltf_INCLUDE_HEADERS})
+
   # Target for tinygltf #
-  add_library(tinygltf INTERFACE)
+  # add_library(tinygltf INTERFACE)
+  # add_library(tinygltf::tinygltf ALIAS tinygltf)
+
+  add_library(tinygltf STATIC ${tinygltf_INCLUDE_HEADERS} "ctinygltf.cpp")
   add_library(tinygltf::tinygltf ALIAS tinygltf)
 
   # Target property for include directories
@@ -43,9 +50,5 @@ else ()
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>"
     "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
   )
-
-  # A simple project to show tinygltf headers in the IDE
-  file(GLOB tinygltf_INCLUDE_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/*.h" "${CMAKE_CURRENT_SOURCE_DIR}/*.hpp")
-  add_custom_target(tinygltf_headers_for_ide SOURCES ${tinygltf_INCLUDE_HEADERS})
 
 endif ()
