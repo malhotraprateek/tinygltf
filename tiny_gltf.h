@@ -523,6 +523,7 @@ struct Image {
   int pixel_type;  // pixel type(TINYGLTF_COMPONENT_TYPE_***). usually
                    // UBYTE(bits = 8) or USHORT(bits = 16)
   std::vector<unsigned char> image;
+  std::vector<unsigned short> image_16bit;
   int bufferView;        // (required if no uri)
   std::string mimeType;  // (required if no uri) ["image/jpeg", "image/png",
                          // "image/bmp", "image/gif"]
